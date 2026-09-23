@@ -1,0 +1,556 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   VARIÁVEIS
+   ========================================================= */
+
+:root {
+  --blue-dark: #071426;
+  --blue-mid: #142d50;
+  --blue-light: #294d78;
+
+  --white: #ffffff;
+  --white-90: rgba(255, 255, 255, 0.9);
+  --white-70: rgba(255, 255, 255, 0.7);
+  --white-50: rgba(255, 255, 255, 0.5);
+
+  --glass: rgba(255, 255, 255, 0.13);
+  --glass-hover: rgba(255, 255, 255, 0.18);
+
+  --border: rgba(255, 255, 255, 0.22);
+
+  --shadow:
+    0 20px 50px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   PÁGINA — CENTRALIZAÇÃO TOTAL
+   ========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+html {
+  background: var(--blue-dark);
+}
+
+body {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(70, 120, 190, 0.35) 0%,
+      transparent 45%
+    ),
+    linear-gradient(
+      180deg,
+      var(--blue-mid) 0%,
+      var(--blue-dark) 100%
+    );
+
+  color: var(--white);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+#root {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+
+/* =========================================================
+   APLICAÇÃO
+   ========================================================= */
+
+.apple-weather-app {
+  width: 100%;
+  max-width: 420px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+  padding: 24px;
+
+  position: relative;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.app-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 24px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   PESQUISA
+   ========================================================= */
+
+.search-bar {
+  width: 100%;
+  max-width: 350px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 5px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.08)
+    );
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  transition: 0.25s ease;
+}
+
+.search-bar:focus-within {
+  border-color: rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.25),
+    0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+.search-bar input {
+  flex: 1;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0 14px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: var(--white);
+
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.search-bar button {
+  height: 40px;
+
+  padding: 0 17px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.16);
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.search-bar button:hover {
+  background: rgba(255, 255, 255, 0.25);
+
+  transform: translateY(-1px);
+}
+
+.search-bar button:active {
+  transform: scale(0.96);
+}
+
+
+/* =========================================================
+   ÁREA DO CLIMA
+   ========================================================= */
+
+.weather-content {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   INFORMAÇÕES PRINCIPAIS
+   ========================================================= */
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   CIDADE
+   ========================================================= */
+
+.city-name {
+  color: #fff;
+
+  font-size: 2.1rem;
+  font-weight: 500;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.5px;
+
+  text-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   TEMPERATURA
+   ========================================================= */
+
+.temperature {
+  margin: 4px 0 0;
+
+  color: #fff;
+
+  font-size: 6rem;
+  font-weight: 200;
+
+  line-height: 0.95;
+
+  letter-spacing: -5px;
+
+  text-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   CONDIÇÃO
+   ========================================================= */
+
+.condition {
+  margin-top: 12px;
+
+  color: var(--white-70);
+
+  font-size: 1.15rem;
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  text-transform: capitalize;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   WIDGETS
+   ========================================================= */
+
+.widgets-grid {
+  width: 100%;
+  max-width: 300px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 18px;
+}
+
+
+/* =========================================================
+   CARD DO WIDGET
+   ========================================================= */
+
+.widget {
+  width: 100%;
+  min-height: 125px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.13),
+      rgba(0, 0, 0, 0.28)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  text-align: center;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.widget:hover {
+  transform: translateY(-3px);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(0, 0, 0, 0.24)
+    );
+
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+
+/* =========================================================
+   ÍCONE
+   ========================================================= */
+
+.widget-icon {
+  margin-bottom: 7px;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 1.35rem;
+
+  filter:
+    drop-shadow(0 3px 8px rgba(0, 0, 0, 0.25));
+}
+
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+
+.widget-title {
+  margin-bottom: 5px;
+
+  color: var(--white-50);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   VALOR
+   ========================================================= */
+
+.widget-value {
+  color: #fff;
+
+  font-size: 1.8rem;
+  font-weight: 600;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.5px;
+
+  text-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   ANIMAÇÃO
+   ========================================================= */
+
+.weather-content {
+  animation: weatherAppear 0.5s ease-out;
+}
+
+@keyframes weatherAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .apple-weather-app {
+    padding: 20px 16px;
+  }
+
+  .app-container {
+    gap: 22px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+  }
+
+  .city-name {
+    font-size: 1.9rem;
+  }
+
+  .temperature {
+    font-size: 5.3rem;
+  }
+
+  .condition {
+    font-size: 1rem;
+  }
+
+  .widgets-grid {
+    max-width: 280px;
+  }
+}
+
+
+/* =========================================================
+   TELAS MUITO PEQUENAS
+   ========================================================= */
+
+@media (max-height: 650px) {
+
+  .apple-weather-app {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .app-container {
+    gap: 16px;
+  }
+
+  .temperature {
+    font-size: 4.5rem;
+  }
+
+  .condition {
+    margin-top: 6px;
+  }
+
+  .widgets-grid {
+    margin-top: 8px;
+  }
+
+  .widget {
+    min-height: 105px;
+  }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =========================================================
+   SELEÇÃO
+   ========================================================= */
+
+::selection {
+  background: rgba(100, 160, 255, 0.45);
+  color: #fff;
+}
