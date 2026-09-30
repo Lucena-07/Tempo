@@ -36,6 +36,50 @@ function App() {
       setCidadeBuscada(dados.name); // Pega o nome exato da API
       setCidade(""); // Limpa o campo de busca
 
+
+      // Enviando dados do react para uma api propria utilizando o metodo post
+
+
+      // ===============================
+// CONTEÚDO DA AULA DE HOJE
+// Enviando dados do React para uma API própria
+// utilizando o método POST.
+// ===============================
+
+// Faz uma requisição para a API de histórico criada pelos alunos
+await fetch("http://localhost:3000/historico", {
+
+  // Define o método HTTP utilizado
+  method: "POST",
+
+  // Informa que os dados enviados estarão no formato JSON
+  headers: {
+    "Content-Type": "application/json"
+  },
+
+  // Converte o objeto JavaScript para JSON
+  body: JSON.stringify({
+
+    // Envia o nome da cidade consultada
+    cidade: cidade,
+
+    // Envia a temperatura retornada pela API OpenWeatherMap
+    temperatura: dados.main.temp + "°C",
+
+    // Envia a descrição do clima
+    clima: dados.weather[0].description,
+
+    // Envia a umidade do ar
+    umidade: dados.main.humidity + "%"
+
+  })
+
+});
+
+// Fim do conteúdo da aula
+// Neste momento os dados foram enviados para a API
+// e armazenados no histórico de consultas.
+
     } catch (erro) {
       console.log(erro);
       alert("Erro ao consultar a API.");
